@@ -815,3 +815,53 @@ button {
         animation: none;
     }
 }
+
+/* Victoire Pisa Visual Upgrade */
+.character-stage {
+    min-height: 390px;
+}
+
+.character-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.victoire-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    filter:
+        drop-shadow(0 0 12px rgba(167, 139, 250, 0.25))
+        drop-shadow(0 0 28px rgba(104, 217, 255, 0.12));
+    animation: victoireFloat 4s ease-in-out infinite;
+}
+
+@keyframes victoireFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@media (max-width: 480px) {
+    .character-stage {
+        min-height: 330px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .victoire-image {
+        animation: none;
+    }
+}
