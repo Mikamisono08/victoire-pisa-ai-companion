@@ -1,4 +1,4 @@
-const API_URL = "https://companion.pratamaridho217.workers.dev/chat";
+const API_URL = "https://victoire-pisa-ai-companion.pratamaridho217.workers.dev/chat";
 
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
