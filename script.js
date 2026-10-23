@@ -1,15 +1,16 @@
+const API_URL = "https://victoire-pisa-ai-companion.pratamaridho217.workers.dev/chat";
+
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatWindow = document.getElementById("chatWindow");
+const chatNote = document.querySelector(".chat-note");
+const history = [];
 
 function openChat() {
     document.getElementById("chat").scrollIntoView({
         behavior: "smooth"
     });
-
-    setTimeout(() => {
-        userInput.focus();
-    }, 500);
+    setTimeout(() => userInput.focus(), 500);
 }
 
 function addMessage(name, message, isUser = false) {
@@ -31,68 +32,80 @@ function addMessage(name, message, isUser = false) {
     const text = document.createElement("p");
     text.textContent = message;
 
-    content.appendChild(sender);
-    content.appendChild(text);
-
-    wrapper.appendChild(avatar);
-    wrapper.appendChild(content);
-
+    content.append(sender, text);
+    wrapper.append(avatar, content);
     chatWindow.appendChild(wrapper);
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-function getDemoReply(message) {
-    const text = message.toLowerCase();
-
-    if (
-        text.includes("halo") ||
-        text.includes("hai") ||
-        text.includes("hello")
-    ) {
-        return "Halo juga! Senang kamu datang. Apa yang ingin kita lakukan hari ini?";
-    }
-
-    if (
-        text.includes("nama") ||
-        text.includes("siapa kamu")
-    ) {
-        return "Aku adalah antarmuka companion yang terinspirasi oleh Victoire Pisa. Versi ini masih berupa prototipe.";
-    }
-
-    if (
-        text.includes("anime") ||
-        text.includes("game")
-    ) {
-        return "Kita bisa mengembangkan proyek ini dengan tema anime dan game. Fitur AI sungguhan akan ditambahkan setelah backend disiapkan.";
-    }
-
-    if (
-        text.includes("terima kasih") ||
-        text.includes("makasih")
-    ) {
-        return "Sama-sama! Mari kita kembangkan proyek ini sedikit demi sedikit.";
-    }
-
-    return "Pesanmu sudah diterima! Saat ini aku masih menggunakan balasan demo. Setelah backend AI terhubung, percakapan bisa dibuat lebih cerdas.";
-}
-
-chatForm.addEventListener("submit", function(event) {
+chatForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const message = userInput.value.trim();
-
-    if (!message) {
-        return;
-    }
+    if (!message) return;
 
     addMessage("Kamu", message, true);
 
     userInput.value = "";
-    userInput.focus();
+    userInput.disabled = true;
 
-    const reply = getDemoReply(message);
+    const button = chatForm.querySelector("button");
+    button.disabled = true;
 
-    setTimeout(() => {
-        addMessage("Victoire Pisa", reply);
-    }, 500);
+    if (chatNote) {
+        chatNote.textContent = "Victoire sedang berpikir...";
+    }
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message,
+                history
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.reply) {
+            throw new Error(
+                data.detail || data.error || "Permintaan AI gagal."
+            );
+        }
+
+        addMessage("Victoire Pisa", data.reply);
+
+        history.push(
+            { role: "user", text: message },
+            { role: "model", text: data.reply }
+        );
+
+        if (history.length > 12) {
+            history.splice(0, history.length - 12);
+        }
+
+        const badge = document.querySelector(".demo-badge");
+        if (badge) badge.textContent = "AI CONNECTED";
+
+        if (chatNote) {
+            chatNote.textContent = "Terhubung ke backend AI.";
+        }
+    } catch (error) {
+        addMessage(
+            "Victoire Pisa",
+            "Koneksi AI belum berhasil. " + error.message
+        );
+
+        if (chatNote) {
+            chatNote.textContent =
+                "Koneksi gagal. Periksa Worker dan secret Gemini.";
+        }
+    } finally {
+        userInput.disabled = false;
+        button.disabled = false;
+        userInput.focus();
+    }
 });
