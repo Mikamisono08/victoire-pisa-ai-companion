@@ -1,4 +1,4 @@
-const API_URL = "https://victoire-pisa-api.pratamaridho217.workers.dev/chat";
+const API_URL = "const API_URL = "https://victoire-pisa-api.pratamaridho217.workers.dev/chat";
 const STORAGE_KEY = "victoire-pisa-chat-v1";
 
 const chatForm = document.getElementById("chatForm");
