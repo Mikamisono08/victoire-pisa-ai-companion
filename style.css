@@ -776,3 +776,42 @@ button {
         scroll-behavior: auto !important;
     }
 }
+/* Victoire Pisa Character */
+.character-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.victoire-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(
+        0 0 22px rgba(167, 139, 250, 0.25)
+    );
+    animation: victoireFloat 4s ease-in-out infinite;
+}
+
+@keyframes victoireFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .victoire-image {
+        animation: none;
+    }
+}
