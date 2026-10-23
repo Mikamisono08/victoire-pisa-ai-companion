@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080817">
+
+    <title>Victoire Pisa | AI Companion</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <header class="topbar">
+        <a href="#" class="logo">
+            <span class="logo-icon">V</span>
+            <span>
+                <strong>VICTOIRE PISA</strong>
+                <small>AI COMPANION PROJECT</small>
+            </span>
+        </a>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-text">
+                <span class="eyebrow">
+                    ✦ YOUR PERSONAL AI COMPANION
+                </span>
+
+                <h1>
+                    Meet Your<br>
+                    <span>Victoire Pisa.</span>
+                </h1>
+
+                <p class="description">
+                    A personal companion interface inspired by
+                    the spirit of Victoire Pisa. Your journey
+                    starts here.
+                </p>
+
+                <div class="hero-buttons">
+                    <button class="primary-button"
+                            onclick="openChat()">
+                        Start Conversation ↗
+                    </button>
+
+                    <a href="#about" class="secondary-button">
+                        Explore Project
+                    </a>
+                </div>
+
+                <div class="feature-row">
+                    <div>
+                        <strong>2D / 3D</strong>
+                        <span>Character Vision</span>
+                    </div>
+
+                    <div>
+                        <strong>AI READY</strong>
+                        <span>Expandable System</span>
+                    </div>
+
+                    <div>
+                        <strong>MOBILE</strong>
+                        <span>Friendly Interface</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="character-panel">
+
+                <div class="panel-label">
+                    <span>CHARACTER DISPLAY</span>
+                    <span>NO. 001</span>
+                </div>
+
+                <div class="character-stage">
+
+                    <div class="orbit orbit-one"></div>
+                    <div class="orbit orbit-two"></div>
+
+                    <div class="character-symbol">
+                        <div class="symbol-ring"></div>
+                        <div class="symbol-letter">VP</div>
+                        <div class="symbol-caption">
+                            VICTOIRE PISA
+                        </div>
+                    </div>
+
+                    <div class="floating-tag tag-top">
+                        ✦ COMPANION MODE
+                    </div>
+
+                    <div class="floating-tag tag-bottom">
+                        <span class="status-dot"></span>
+                        VISUAL PLACEHOLDER
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <div>
+                        <small>PROJECT STATUS</small>
+                        <strong>INITIAL PROTOTYPE</strong>
+                    </div>
+
+                    <div class="footer-icon">✧</div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="about-section" id="about">
+
+            <div class="section-heading">
+                <span class="eyebrow">THE PROJECT</span>
+                <h2>More than a <span>chat interface.</span></h2>
+                <p>
+                    A foundation for a character-centered AI
+                    companion that can grow with future features.
+                </p>
+            </div>
+
+            <div class="feature-cards">
+
+                <article class="feature-card">
+                    <div class="card-icon">◈</div>
+                    <h3>Character Visuals</h3>
+                    <p>
+                        Prepare a dedicated space for character
+                        artwork and future 2D or 3D integration.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">⌘</div>
+                    <h3>AI Conversation</h3>
+                    <p>
+                        Build a chat interface that can later
+                        connect to an AI service through a backend.
+                    </p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="card-icon">✧</div>
+                    <h3>Personal Experience</h3>
+                    <p>
+                        Create a customizable companion experience
+                        with a futuristic visual identity.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="chat-section" id="chat">
+
+            <div class="chat-heading">
+                <div>
+                    <span class="eyebrow">INTERACTION MODULE</span>
+                    <h2>Companion <span>Chat</span></h2>
+                </div>
+
+                <span class="demo-badge">DEMO MODE</span>
+            </div>
+
+            <div class="chat-window" id="chatWindow">
+
+                <div class="message companion-message">
+                    <div class="message-avatar">VP</div>
+
+                    <div class="message-content">
+                        <strong>Victoire Pisa</strong>
+                        <p>
+                            Halo! Selamat datang di ruang
+                            companion-ku. Apa yang ingin kamu
+                            bicarakan hari ini?
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <form class="chat-form" id="chatForm">
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Tulis pesan di sini..."
+                    autocomplete="off"
+                    maxlength="500"
+                    required
+                >
+
+                <button type="submit" aria-label="Kirim pesan">
+                    Kirim ↗
+                </button>
+            </form>
+
+            <p class="chat-note">
+                Demo lokal: balasan belum dihasilkan oleh model AI.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-logo">V/P</div>
+
+        <p>
+            VICTOIRE PISA AI COMPANION
+            <span>•</span>
+            COMMUNITY PROJECT
+        </p>
+
+        <small>Built for the next chapter.</small>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+          </html>
